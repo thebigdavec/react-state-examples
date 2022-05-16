@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import OurContext from '../OurContext'
 
-function MainArea(props) {
+export default function MainArea() {
+  const { color, size } = useContext(OurContext)
   return (
-    <div
-      className="main-area"
-      style={{ color: props.color, fontSize: `${props.size}px` }}>
+    <div className="main-area" style={{ color, fontSize: `${size}px` }}>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quod
         obcaecati dolore debitis amet aut, excepturi voluptas ratione quibusdam
@@ -14,5 +14,3 @@ function MainArea(props) {
     </div>
   )
 }
-
-export default MainArea

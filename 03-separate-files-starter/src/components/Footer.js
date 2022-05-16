@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import OurContext from '../OurContext'
 
-function Footer(props) {
+export default function Footer() {
+  const { setSize, setLikeCount } = useContext(OurContext)
+
   return (
     <footer className="footer">
       <p>
         This is the footer.{' '}
         <button
           onClick={() => {
-            props.setSize(30)
+            setSize(30)
           }}>
           Make the text 30px but leave the color the same
         </button>
       </p>
       <p>
-        <button onClick={() => props.setLikeCount(prev => prev + 1)}>
+        <button onClick={() => setLikeCount(prev => prev + 1)}>
           Like The Page
         </button>
       </p>
     </footer>
   )
 }
-
-export default Footer
