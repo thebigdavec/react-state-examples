@@ -1,25 +1,27 @@
 import React, { useContext } from 'react'
-import OurContext from '../OurContext'
+import DispatchContext from '../DispatchContext'
 
-export default function Footer() {
-  const { setSize, setLikeCount } = useContext(OurContext)
+function Footer() {
+  const dispatch = useContext(DispatchContext)
 
   return (
     <footer className="footer">
       <p>
         This is the footer.{' '}
-        <button
-          onClick={() => {
-            setSize(30)
-          }}>
+        <button onClick={() => dispatch({ type: 'changeSize', value: 30 })}>
           Make the text 30px but leave the color the same
         </button>
       </p>
       <p>
-        <button onClick={() => setLikeCount(prev => prev + 1)}>
+        <button onClick={() => dispatch({ type: 'decrementLikes' })}>
+          Dislike The Page
+        </button>
+        <button onClick={() => dispatch({ type: 'incrementLikes' })}>
           Like The Page
         </button>
       </p>
     </footer>
   )
 }
+
+export default React.memo(Footer)
